@@ -1,0 +1,29 @@
+{
+  "name": "health-user",
+  "version": "1.0.0",
+  "description": "Aplicacao de calculo de IMC",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucastravagin/health-user.git"
+  },
+  "keywords": [
+    "IMC",
+    "HEALTH",
+    "SAUDE"
+  ],
+  "author": "Lucas Travagin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucastravagin/health-user/issues"
+  },
+  "homepage": "https://github.com/lucastravagin/health-user#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
