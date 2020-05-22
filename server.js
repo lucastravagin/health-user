@@ -4,6 +4,12 @@
 
 const app = require('express')()
 const port = process.env.PORT || 3000
+const bodyParser = require('body-parser')
+
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+
 
 app.listen(port, () => {
     console.log(`Server running in port ${port}`);
@@ -13,17 +19,5 @@ app.get('/', (req, res) => {
     res.json({mensagem: "Olá Mundo"})
 })
 
-app.get('/users', (req, res) => {
+require('./src/routers/PessoaRouter')(app)
 
-    res.json({
-        nome: "Lucas",
-        cpf: "46140346839",
-        imc: "39.9",
-        registros: [
-            {peso: 120, altura: 1.80, imc: 39.9, data: 22/05/2020},
-            {peso: 120, altura: 1.80, imc: 25.9, data: 22/06/2020},
-            {peso: 120, altura: 1.80, imc: 21.9, data: 22/07/2020}
-        ]
-    })
-
-})
