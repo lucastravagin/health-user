@@ -31,3 +31,16 @@ exports.GetPessoaById = (req, res) => {
         }
     })
 }
+
+exports.InserirPessoa = (req, res) => {
+    let pessoa = new Pessoa(req.body)
+    Pessoa.InserirPessoa(pessoa, (err, dados) => {
+        if(err) {
+            res.status(500).send({
+                mesangem: `Errro ao inserir no banco de dados ${err.message}`
+            })
+        }else {
+            res.send(dados)
+        }
+    })
+}

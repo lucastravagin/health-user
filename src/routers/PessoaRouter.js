@@ -7,4 +7,7 @@ module.exports = app => {
     //Consultar uma pessoa por ID
     app.get('/pessoas/:Id', PessoaController.GetPessoaById)
 
+    //Inserir uma pessoa
+    app.post('/pessoas', PessoaController.InserirPessoa)
+
 }

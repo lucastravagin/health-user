@@ -1,6 +1,6 @@
 const connection = require('../config/db_config')
 
-const Pessoa = (pessoa) => {
+const Pessoa = function(pessoa)  {
     this.nome = pessoa.nome
     this.cpf = pessoa.cpf
 }
@@ -22,7 +22,7 @@ Pessoa.GetPessoaById = (id, result) => {
     connection.query('SELECT * FROM pessoa where id = ' + id, (err, res) => {
         if (err) {
             console.log('Erro: ', err)
-            result(err)
+            result(null, err)
             return
         }
 
@@ -36,5 +36,19 @@ Pessoa.GetPessoaById = (id, result) => {
         result(null, {kind: 'not_found'})
     })
 }
+
+Pessoa.InserirPessoa = (pessoa, result) => {
+    connection.query('INSERT INTO pessoa SET ?', pessoa, (err, res) => {
+        if(err) {
+            console.log('Erro: ', err)
+            result(null, err)
+            return
+        }
+        console.log('Objeto inserido com sucess', {id: res.insertId, ...pessoa })
+        result(null, {id: res.insertId, ...pessoa })
+    })
+}
+
+
 
 module.exports = Pessoa
