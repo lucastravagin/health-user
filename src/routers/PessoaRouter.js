@@ -4,4 +4,7 @@ module.exports = app => {
 
     app.get('/pessoas', PessoaController.GetPessoa)
 
+    //Consultar uma pessoa por ID
+    app.get('/pessoas/:Id', PessoaController.GetPessoaById)
+
 }

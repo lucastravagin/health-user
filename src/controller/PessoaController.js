@@ -13,3 +13,21 @@ exports.GetPessoa = (req, res) => {
         }
     })
 }
+
+exports.GetPessoaById = (req, res) => {
+    Pessoa.GetPessoaById(req.params.Id, (err, dados) => {
+        if(err) {
+            if(err.kind === 'not_found') {
+                res.status(404).send({
+                    mensagem: `Pessoa não encontrada`
+                })
+            }else{
+                res.status(500).send({
+                    mensagem: `Ocorreu um erro na consultas`
+                })
+            }
+        }else {
+            res.send(dados)
+        }
+    })
+}
